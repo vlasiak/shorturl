@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   root 'links#new'
   resources :links, only: [:new, :create]
 
-  get '/:hash', to: 'redirects#process', constraints: { hash: /\w+/ }, as: :process_redirect
+  get '/:hash', to: 'redirects#perform', constraints: { hash: /\w+/ }
 end

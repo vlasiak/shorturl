@@ -1,0 +1,8 @@
+.url-container
+  %h1.title= 'Url shortener'
+  %span#message
+  = form_tag links_path, remote: true do
+    = text_field_tag :href, '', class: 'url-input'
+    = submit_tag 'Shrink it', class: 'url-button'
+  = text_field_tag :short_url, '', readonly: true, class: 'url-input'
+  %button{ type: 'button', id: 'copy_to_clipboard', class: 'url-button' }= 'Copy'
