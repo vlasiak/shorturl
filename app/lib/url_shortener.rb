@@ -3,7 +3,7 @@ class UrlShortener
   BASE = ALPHABET.length
 
   def self.encode(number)
-    number = NumberMapper.new(number).encode
+    number = NumberMapper.new(number).encrypt
     hash = ''
 
     while number > 0 do
@@ -21,6 +21,6 @@ class UrlShortener
       number += ALPHABET.index(char) * BASE ** index
     end
 
-    NumberMapper.new(number).decode
+    NumberMapper.new(number).decrypt
   end
 end

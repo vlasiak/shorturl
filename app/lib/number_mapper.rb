@@ -1,15 +1,25 @@
+# The algorithm is based on the Affine cipher
+# (Symmetric bijective algorithm for positive integers)
+
 class NumberMapper
-  attr_reader :number
+  BASE = 1073741789
+  SECRET = 173741789
+  SHIFT = 507371178
+  INVERSE = 237183726
 
   def initialize(number)
     @number = number
   end
 
-  def encode
-    ((number + 173741789) * 507371178) % 1073741789
+  def encrypt
+    (SECRET * number + SHIFT ) % BASE
   end
 
-  def decode
-    (number * 233233408 + 1073741789 - 173741789) % 1073741789
+  def decrypt
+    (INVERSE * (number - SHIFT)) % BASE
   end
+
+  private
+
+  attr_reader :number
 end
