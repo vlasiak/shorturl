@@ -8,6 +8,7 @@ class NumberMapper
   INVERSE = 237183726
 
   def initialize(number)
+    raise ArgumentError unless number.kind_of? Integer
     @number = number
   end
 

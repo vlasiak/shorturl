@@ -3,9 +3,9 @@ class UrlShortener
   BASE = ALPHABET.length
 
   def self.encode(number)
-    number = NumberMapper.new(number).encrypt
-    hash = ''
+    raise ArgumentError unless number.kind_of? Integer
 
+    number, hash = NumberMapper.new(number).encrypt, ''
     while number > 0 do
       number, index = number.divmod(BASE)
       hash += ALPHABET[index]
@@ -15,10 +15,11 @@ class UrlShortener
   end
 
   def self.decode(hash)
-    number = 0
+    raise ArgumentError unless hash.is_a? String
 
+    number = 0
     hash.each_char.with_index do |char, index|
-      number += ALPHABET.index(char) * BASE ** index
+      number += ALPHABET.index(char).to_i * BASE ** index
     end
 
     NumberMapper.new(number).decrypt
