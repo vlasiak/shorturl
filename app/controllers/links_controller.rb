@@ -3,7 +3,6 @@ class LinksController < ApplicationController
 
   def create
     link = Link.create!(href: params[:href])
-    hash = UrlShortener.encode(link.id)
-    @short_url = request.host_with_port + '/' + hash
+    @hash = UrlShortener.encode(link.id)
   end
 end
