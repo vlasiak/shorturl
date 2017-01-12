@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  unless Rails.application.config.consider_all_requests_local
+  unless Rails.env.development?
     rescue_from ActionController::RoutingError, ActiveRecord::RecordNotFound, with: :render_404
   end
 
